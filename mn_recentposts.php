@@ -50,7 +50,7 @@ function mn_recent_posts() {
                 $feature_link = wp_get_attachment_image_src( $feature_id, 'full' );
                 $feature_link = $feature_link[0];
 
-                echo '<div class="mn_post__feature" style="background-image: url(' . $feature_link . ')">';
+                echo '<div class="mn-post__feature" style="background-image: url(' . $feature_link . ')">';
 
                     echo '<a href="' . get_permalink() . '"></a>';
 
@@ -58,7 +58,7 @@ function mn_recent_posts() {
 
                 // post details - currently having an title, category, excerpt and link
 
-                echo '<div class="mn_post__details">';
+                echo '<div class="mn-post__details">';
 
                     echo '<a href="' . get_permalink() . '"><h2>' . get_the_title() . '</h2></a>';
 
