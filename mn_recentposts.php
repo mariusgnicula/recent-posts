@@ -1,6 +1,7 @@
 <?php
 /*
 * Plugin Name: MN Recent Posts
+* Plugin URI: https://github.com/mariusgnicula/recent-posts
 * Description: A custom recent posts widget with feature image, title, category, excerpt and a read more link.
 * Version: 0.1
 * Author: Marius Nicula
@@ -48,7 +49,7 @@ function mn_recent_posts() {
                 $feature = get_post( get_post_thumbnail_id( $id ) );
                 $feature_id = $feature->ID;
                 $feature_link = wp_get_attachment_image_src( $feature_id, 'full' );
-		$feature_link = $feature_link[0];
+                $feature_link = $feature_link[0];
 
                 echo '<div class="mn-post__feature" style="background-image: url(' . $feature_link . ')">';
 
@@ -60,11 +61,11 @@ function mn_recent_posts() {
 
                     echo '<a href="' . get_permalink() . '"><h2>' . get_the_title() . '</h2></a>';
 
-                    echo '<div class="mn-post__category">';
+			echo '<div class="mn-post__category">';
 
-                        the_category( ', ' );
+				the_category( ', ' );
 
-                    echo '</div>';
+			echo '</div>';
 
 	                the_excerpt();
 
