@@ -3,20 +3,34 @@
 * Plugin Name: MN Recent Posts
 * Plugin URI: https://github.com/mariusgnicula/recent-posts
 * Description: A custom recent posts widget with feature image, title, category, excerpt and a read more link.
-* Version: 0.1
+* Version: 0.2
 * Author: Marius Nicula
 * Author URI: https://www.linkedin.com/in/mariusgnicula
 */
 
 // recent posts function start
-function mn_recent_posts() {
+function mn_recent_posts($atts) {
+
+    // added the ability to pass in the number of posts, defaults to 4
+    // added the ability to pass in post_type, defaults to post
+
+    $a = shortcode_atts( array(
+        'number' => 4,
+        'post_type' => 'post'
+
+    ), $atts );
+
+    // parse it to an integer just in case
+
+    $custom_number = (int)$a['number'];
+    $custom_type = $a['post_type'];
 
     // query args
     // maybe make it more dynamic in the future
 
     $mn_args = array(
-        'post_type'  => 'post',
-        'posts_per_page' => 4
+        'post_type'  => $custom_type,
+        'posts_per_page' => $custom_number
     );
 
     // WP_Query declaration
@@ -69,7 +83,7 @@ function mn_recent_posts() {
 
 	                the_excerpt();
 
-	                echo '<a href="' . get_permalink() . '">Read more</a>';
+	                echo '<a href="' . get_permalink() . '" class="mn-post__more">Citeste articol</a>';
 
                 echo '</div>';
 
