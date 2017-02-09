@@ -14,11 +14,11 @@ function mn_recent_posts($atts) {
     // added the ability to pass in the number of posts, defaults to 4
     // added the ability to pass in post_type, defaults to post
 
-    $a = shortcode_atts( array(
+    $a = shortcode_atts( [
         'number' => 4,
         'post_type' => 'post'
 
-    ), $atts );
+    ], $atts );
 
     // parse it to an integer just in case
 
@@ -28,10 +28,10 @@ function mn_recent_posts($atts) {
     // query args
     // maybe make it more dynamic in the future
 
-    $mn_args = array(
-        'post_type'  => $custom_type,
+    $mn_args = [
+        'post_type' => $custom_type,
         'posts_per_page' => $custom_number
-    );
+    ];
 
     // WP_Query declaration
 
@@ -75,11 +75,11 @@ function mn_recent_posts($atts) {
 
                     echo '<a href="' . get_permalink() . '"><h2>' . get_the_title() . '</h2></a>';
 
-			echo '<div class="mn-post__category">';
+                    echo '<div class="mn-post__category">';
 
-				the_category( ', ' );
+                        the_category( ', ' );
 
-			echo '</div>';
+                    echo '</div>';
 
 	                the_excerpt();
 
